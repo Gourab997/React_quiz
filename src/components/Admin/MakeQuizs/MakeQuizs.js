@@ -5,7 +5,14 @@ import "./MakeQuizs.css";
 
 const MakeQuizs = () => {
   const [inputList, setInputList] = useState([
-    { question: "", answer1: "", answer2: "", answer3: "", answer4: "" },
+    {
+      question: "",
+      option1: "",
+      option2: "",
+      option3: "",
+      option4: "",
+      answer: "",
+    },
   ]);
   const {
     register,
@@ -30,7 +37,14 @@ const MakeQuizs = () => {
   const handleAddClick = () => {
     setInputList([
       ...inputList,
-      { question: "", answer1: "", answer2: "", answer3: "", answer4: "" },
+      {
+        question: "",
+        option1: "",
+        option2: "",
+        option3: "",
+        option4: "",
+        answer: "",
+      },
     ]);
   };
   const onSubmit = (data) => {
@@ -42,9 +56,9 @@ const MakeQuizs = () => {
     });
   };
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div class="mb-3">
+        <div class="mb-3 d-flex ">
           <label for="exampleFormControlInput1" class="form-label">
             Quiz Title
           </label>
@@ -59,32 +73,35 @@ const MakeQuizs = () => {
 
         {inputList.map((x, i) => {
           return (
-            <div className="card my-4">
+            <div className="card container my-4 py-4">
               <div className="container">
                 <div className="d-flex justify-content-evenly">
-                  <label>Question</label>
+                  <label>
+                    {" "}
+                    <span class="badge bg-info ">Question {i + 1}</span>{" "}
+                  </label>
                   <input
                     name="question"
-                    class="card-title"
+                    class="card-title w-75"
                     placeholder="Question"
                     value={x.question}
                     onChange={(e) => handleInputChange(e, i)}
                   />
                 </div>
-                <div className="container">
-                  <div className="d-flex justify-content-between my-3">
+                <div className="container ">
+                  <div className="d-flex justify-content-center   my-3">
                     <input
-                      className="ml10"
-                      name="answer1"
+                      className="ml10 w-25 me-3"
+                      name="option1"
                       placeholder="Option 1"
-                      value={x.answer1}
+                      value={x.option1}
                       onChange={(e) => handleInputChange(e, i)}
                     />
                     <div class="form-check ">
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        value=""
+                        value={x.answer}
                         id="flexCheckDefault"
                       />
                       <label class="form-check-label" for="flexCheckDefault">
@@ -92,19 +109,21 @@ const MakeQuizs = () => {
                       </label>
                     </div>
                   </div>
-                  <div className="d-flex justify-content-between my-3">
+                  <div className="d-flex justify-content-center my-3">
                     <input
-                      className="ml10"
-                      name="answer1"
-                      placeholder="Option 1"
-                      value={x.answer1}
+                      className="ml10 w-25 me-3"
+                      name="option2"
+                      placeholder="Option 2"
+                      id="A"
+                      value="A"
+                      checked={x.answer}
                       onChange={(e) => handleInputChange(e, i)}
                     />
                     <div class="form-check ">
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        value=""
+                        value={x.answer}
                         id="flexCheckDefault"
                       />
                       <label class="form-check-label" for="flexCheckDefault">
@@ -112,59 +131,69 @@ const MakeQuizs = () => {
                       </label>
                     </div>
                   </div>
-                  <div className="d-flex justify-content-between my-3">
+                  <div className="d-flex  justify-content-center my-3">
                     <input
-                      className="ml10"
-                      name="answer1"
-                      placeholder="Option 1"
-                      value={x.answer1}
+                      className="ml10 w-25 me-3"
+                      name="option1"
+                      placeholder="Option 3"
+                      value={x.option3}
                       onChange={(e) => handleInputChange(e, i)}
                     />
-                    <div class="form-check ">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Answer
-                      </label>
-                    </div>
-                  </div>
-                  <div className="d-flex justify-content-between my-3">
-                    <input
-                      className="ml10"
-                      name="answer1"
-                      placeholder="Option 1"
-                      value={x.answer1}
-                      onChange={(e) => handleInputChange(e, i)}
-                    />
-                    <div class="form-check ">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value=""
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Answer
-                      </label>
-                    </div>
-                  </div>
 
-               
+                    <div class="form-check ">
+                      <input
+                        class="form-check-input"
+                        name="answer"
+                        type="checkbox"
+                        value=""
+                        onChange={(x.answer = "A")}
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Answer
+                      </label>
+                    </div>
+                  </div>
+                  <div className="d-flex justify-content-center   my-3">
+                    <input
+                      className="ml10 w-25 me-3"
+                      name="option1"
+                      placeholder="Option 4"
+                      value={x.option4}
+                      onChange={(e) => handleInputChange(e, i)}
+                    />
+                    <div class="form-check ">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="answer"
+                        value="A"
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Answer
+                      </label>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="btn-box">
+              <div className="btn-box ">
                 {inputList.length !== 1 && (
-                  <button className="mr10" onClick={() => handleRemoveClick(i)}>
+                  <button
+                    className="mr10 btn btn-danger float-end"
+                    onClick={() => handleRemoveClick(i)}
+                  >
                     Remove
                   </button>
                 )}
                 {inputList.length - 1 === i && (
-                  <button onClick={handleAddClick}>Add</button>
+                  <button
+                    className="btn btn-success float-end"
+                    onClick={handleAddClick}
+                  >
+                    Add More Question
+                  </button>
                 )}
               </div>
             </div>
