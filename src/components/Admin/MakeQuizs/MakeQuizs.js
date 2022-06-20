@@ -1,4 +1,5 @@
 import axios from "axios";
+import _uniqueId from "lodash/uniqueId";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./MakeQuizs.css";
@@ -14,12 +15,17 @@ const MakeQuizs = () => {
       answer: "",
     },
   ]);
+  const [radioValue, setradioValue] = useState([]);
+  const [id] = useState(_uniqueId("prefix-"));
   const {
     register,
     handleSubmit,
 
     formState: { errors },
   } = useForm();
+  const handleRadioChange = (e) => {
+    console.log(e);
+  };
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
@@ -97,39 +103,14 @@ const MakeQuizs = () => {
                       value={x.option1}
                       onChange={(e) => handleInputChange(e, i)}
                     />
-                    <div class="form-check ">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value={x.answer}
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Answer
-                      </label>
-                    </div>
                   </div>
                   <div className="d-flex justify-content-center my-3">
                     <input
                       className="ml10 w-25 me-3"
                       name="option2"
                       placeholder="Option 2"
-                      id="A"
-                      value="A"
-                      checked={x.answer}
                       onChange={(e) => handleInputChange(e, i)}
                     />
-                    <div class="form-check ">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value={x.answer}
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Answer
-                      </label>
-                    </div>
                   </div>
                   <div className="d-flex  justify-content-center my-3">
                     <input
@@ -139,20 +120,6 @@ const MakeQuizs = () => {
                       value={x.option3}
                       onChange={(e) => handleInputChange(e, i)}
                     />
-
-                    <div class="form-check ">
-                      <input
-                        class="form-check-input"
-                        name="answer"
-                        type="checkbox"
-                        value=""
-                        onChange={(x.answer = "A")}
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Answer
-                      </label>
-                    </div>
                   </div>
                   <div className="d-flex justify-content-center   my-3">
                     <input
@@ -162,18 +129,67 @@ const MakeQuizs = () => {
                       value={x.option4}
                       onChange={(e) => handleInputChange(e, i)}
                     />
-                    <div class="form-check ">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="answer"
-                        value="A"
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Answer
-                      </label>
-                    </div>
+                  </div>
+                </div>
+                <div className="d-flex">
+                  <div class="form-check me-2">
+                    <input
+                      key={i}
+                      class="form-check-input"
+                      type="radio"
+                      name="answer"
+                      value="A"
+                      id={i}
+                      onChange={(e) => handleInputChange(e, i)}
+                      checked={x.answer === "A"}
+                    />
+                    <label class="form-check-label" for={i}>
+                      A
+                    </label>
+                  </div>
+                  <div class="form-check me-2">
+                    <input
+                      key={i}
+                      class="form-check-input"
+                      type="radio"
+                      name="answer"
+                      id={i}
+                      value="B"
+                      onChange={(e) => handleInputChange(e, i)}
+                      checked={x.answer === "B"}
+                    />
+                    <label class="form-check-label" for={i}>
+                      B
+                    </label>
+                  </div>
+                  <div class="form-check me-2">
+                    <input
+                      key={i}
+                      class="form-check-input"
+                      type="radio"
+                      name="answer"
+                      value="C"
+                      id={i}
+                      onChange={(e) => handleInputChange(e, i)}
+                      checked={x.answer === "C"}
+                    />
+                    <label class="form-check-label" for={i}>
+                      C
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="answer"
+                      id={i}
+                      value="D"
+                      onChange={(e) => handleInputChange(e, i)}
+                      checked={x.answer === "D"}
+                    />
+                    <label class="form-check-label" for={i}>
+                      D
+                    </label>
                   </div>
                 </div>
               </div>
