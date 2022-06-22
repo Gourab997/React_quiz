@@ -192,6 +192,17 @@ const MakeQuizs = () => {
                     </label>
                   </div>
                 </div>
+                <select
+                  name="answer"
+                  value={x.answer}
+                  onChange={(e) => handleInputChange(e, i)}
+                  class="form-control"
+                >
+                  <option value="A">Option 1</option>
+                  <option value="B">Option 2</option>
+                  <option value="C">Option 3</option>
+                  <option value="D">Option 4</option>
+                </select>
               </div>
 
               <div className="btn-box ">
