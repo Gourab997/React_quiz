@@ -13,16 +13,31 @@ const StartQuizs = () => {
   return (
     <div>
       {getquiz &&
-        getquiz.quizs.map((qus) => (
+        getquiz.quizs.map((qus, i) => (
           <div>
-            <h6>{qus.question}</h6>
-            <p>{qus.option1}</p>
-            <p>{qus.option2}</p>
-            <p>{qus.option3}</p>
-            <p>{qus.option4}</p>
+            <div class="card-body">
+              <h5 class="card-title">{qus.question}</h5>
+              <div>
+                <input class="form-check-input" type="radio" name={i} id={i} />
+                <label class="form-check-label" for={i}>
+                  {qus.option1}
+                </label>
+                <input class="form-check-input" type="radio" name={i} id={i} />
+                <label class="form-check-label" for={i}>
+                  {qus.option2}
+                </label>
+                <input class="form-check-input" type="radio" name={i} id={i} />
+                <label class="form-check-label" for={i}>
+                  {qus.option3}
+                </label>
+                <input class="form-check-input" type="radio" name={i} id={i} />
+                <label class="form-check-label" for={i}>
+                  {qus.option4}
+                </label>
+              </div>
+            </div>
           </div>
         ))}
-      {/* */}
     </div>
   );
 };
