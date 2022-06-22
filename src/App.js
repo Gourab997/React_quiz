@@ -1,16 +1,17 @@
 import { Route, Routes } from "react-router-dom";
-import './App.css';
+import "./App.css";
 import MakeQuizs from "./components/Admin/MakeQuizs/MakeQuizs";
-import Home from './components/Home/Home';
+import Home from "./components/Home/Home";
+import StartQuizs from "./components/User/StartQuizs/StartQuizs";
 
 function App() {
   return (
     <div className="App">
-    <Routes>
-    <Route path="/" element={<Home />} />
+      <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="quiz" element={<MakeQuizs />} />
-    </Routes>
-
+        <Route path="/start-quiz/:quizId" element={<StartQuizs/>} />
+      </Routes>
     </div>
   );
 }
