@@ -45,7 +45,7 @@ const StartQuizs = () => {
                     type="radio"
                     name={i}
                     value="A"
-                    {...register(`anwser${i}`)}
+                    {...register(`answer${i}`)}
                   />
                   <label class="form-check-label" for={i}>
                     {qus.option1}
@@ -55,7 +55,7 @@ const StartQuizs = () => {
                     type="radio"
                     name={i}
                     value="B"
-                    {...register(`anwser${i}`)}
+                    {...register(`answer${i}`)}
                   />
                   <label class="form-check-label" for={i}>
                     {qus.option2}
@@ -64,7 +64,7 @@ const StartQuizs = () => {
                     class="form-check-input"
                     type="radio"
                     name={i}
-                    {...register(`anwser${i}`)}
+                    {...register(`answer${i}`)}
                     value="C"
                   />
                   <label class="form-check-label" for={i}>
@@ -74,7 +74,7 @@ const StartQuizs = () => {
                     class="form-check-input"
                     type="radio"
                     name={i}
-                    {...register(`anwser${i}`)}
+                    {...register(`answer${i}`)}
                     value="D"
                   />
                   <label class="form-check-label" for={i}>

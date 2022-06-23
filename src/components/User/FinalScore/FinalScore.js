@@ -27,7 +27,7 @@ const FinalScore = () => {
   return (
     <div className="card">
       <h3 class="card-title ">Result</h3>
-      <div class="card-body border border-primary anwser-grid">
+      <div class="card-body border border-primary answer-grid">
         {getquizAnswer &&
           getquizAnswer.map((qus, i) => (
             <div class="card-body border border-primary">
@@ -37,9 +37,9 @@ const FinalScore = () => {
               <p>
                 {" "}
                 Correct Answer :
-                {getanswer && getanswer[`anwser${i}`] == qus.answer ? (
+                {getanswer && getanswer[`answer${i}`] == qus.answer ? (
                   (handleCounter(),
-                  getanswer[`anwser${i}`],
+                  getanswer[`answer${i}`],
                   (
                     <span className="badge bg-success ms-1">
                       {qus.answer} (+1 point){" "}

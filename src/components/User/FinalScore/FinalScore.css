@@ -11,7 +11,7 @@
   padding: 20px;
 }
 
-.anwser-grid {
+.answer-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
@@ -26,7 +26,7 @@
 
 .icon {
   position: absolute;
-  color: #fff;
+  color: rgb(221, 255, 251);
   font-size: 20px;
   top: 50px;
   left: 50px;
