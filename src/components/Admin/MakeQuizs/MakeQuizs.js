@@ -23,9 +23,7 @@ const MakeQuizs = () => {
 
     formState: { errors },
   } = useForm();
-  const handleRadioChange = (e) => {
-    console.log(e);
-  };
+
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];

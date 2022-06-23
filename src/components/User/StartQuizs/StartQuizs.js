@@ -1,22 +1,34 @@
+import axios from "axios";
+import _uniqueId from "lodash/uniqueId";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const StartQuizs = () => {
   const { quizId } = useParams([]);
   const [getquiz, setGetquiz] = useState();
+  const [id] = useState(_uniqueId("prefix-"));
   const {
     register,
     handleSubmit,
 
     formState: { errors },
   } = useForm();
+  const navigate = useNavigate();
   useEffect(() => {
     fetch(`http://localhost:5000/quiz/${quizId}`)
       .then((res) => res.json())
       .then((data) => setGetquiz(data));
   }, [getquiz]);
+
   const onDataSubmit = (data) => {
-    console.log(data);
+    data.questionId = quizId;
+    data.uniqueId = id;
+    axios.post(`http://localhost:5000/answer`, data).then((res) => {
+      if (res.data.insertedId) {
+        navigate(`/answer/${data.uniqueId}`);
+        alert("answer submitted Successfully");
+      }
+    });
   };
   return (
     <div>
