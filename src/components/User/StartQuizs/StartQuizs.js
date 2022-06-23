@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const StartQuizs = () => {
   const { quizId } = useParams([]);
   const [getquiz, setGetquiz] = useState();
-  const [id] = useState(_uniqueId("prefix-"));
+  const [id] = useState(_uniqueId(Math.floor(Math.random() * 500 + 1)));
   const {
     register,
     handleSubmit,
