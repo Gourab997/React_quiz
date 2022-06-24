@@ -11,18 +11,22 @@ const FinalScore = () => {
     fetch(`http://localhost:5000/answer/${quizId}`)
       .then((res) => res.json())
       .then((data) => setGetanswer(data));
-    setQuiz_id(getanswer?.questionId);
-  }, [getanswer]);
+ 
+  }, [quizId]);
 
   const handleCounter = () => {
     count++;
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/quiz/${quiz_id}`)
+    setQuiz_id(getanswer?.questionId);
+ if(quiz_id){
+      fetch(`http://localhost:5000/quiz/${quiz_id}`)
       .then((res) => res.json())
       .then((data) => setGetquizAnswer(data.quizs));
-  }, [quiz_id]);
+    }
+
+  },[quiz_id , getanswer ]);
 
   return (
     <div className="card">

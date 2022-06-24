@@ -18,7 +18,7 @@ const StartQuizs = () => {
     fetch(`http://localhost:5000/quiz/${quizId}`)
       .then((res) => res.json())
       .then((data) => setGetquiz(data));
-  }, [getquiz]);
+  }, [quizId]);
 
   const onDataSubmit = (data) => {
     data.questionId = quizId;
