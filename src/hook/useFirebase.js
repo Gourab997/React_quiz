@@ -18,7 +18,6 @@ const useFirebase = () => {
   // const [admin, setAdmin] = useState(false);
   const auth = getAuth();
 
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -36,7 +35,7 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         const destination = location.state?.from || "/";
-        history.replace(destination);
+        history(destination,{replace: true});
         setAuthError("");
       })
       .catch((error) => {

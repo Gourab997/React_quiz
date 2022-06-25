@@ -27,11 +27,15 @@ const Header = () => {
       <li className="nav-item">
   
     </li>
-  
-        <button className="nav-link" onClick={logOut} >Logout</button>
+{
+  user?.email ?
+  <button className="nav-link" onClick={logOut} >Logout</button> :
+  <Link className="nav-link" to="/login">Login</Link>
+}
+       
               
           
-                <Link className="nav-link" to="/login">Login</Link>
+             
             
  
       </div>
