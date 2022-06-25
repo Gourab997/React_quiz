@@ -14,22 +14,15 @@ const Header = () => {
     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <Link className="nav-link active"  to="/">Home</Link>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+        
       </ul>
       <div className="d-flex">
-      <li className="nav-item">
-  
-    </li>
+      
 {
   user?.email ?
-  <button className="nav-link" onClick={logOut} >Logout</button> :
+  <a className="nav-link" onClick={logOut}>Logout</a> :
   <Link className="nav-link" to="/login">Login</Link>
 }
        

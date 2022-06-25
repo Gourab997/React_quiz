@@ -19,26 +19,27 @@ const Login = () => {
         e.preventDefault();
     };
     return (
-        <div>
+        <div className='login-div'>
 
 
-            <form onSubmit={handleLogin}>
+            <form className='login-form' onSubmit={handleLogin}>
                 <h3>Login Here</h3>
 
-                <label for="email">Email</label>
+                <label className='input-label' for="email">Email</label>
                 <input label='Email'
                     type='email'
                     name='email'
+                    className='login-input'
                     onChange={handleOnChange} placeholder="Email" id="email" />
 
-                <label for="password">Password</label>
-                <input    label='Password'
+                <label className='input-label' for="password">Password</label>
+                <input  className='login-input'  label='Password'
               type='password'
     
               name='password'
               onChange={handleOnChange} id="password" />
 
-                <button type='submit'>Log In</button>
+                <button className='login-button' type='submit'>Log In</button>
                 <div class="social">
                     <Link to="/registration">Registration </Link>
                 </div>

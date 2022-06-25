@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../../Shared/Header/Header";
 import "./FinalScore.css";
 const FinalScore = () => {
   const { quizId } = useParams([]);
@@ -29,6 +30,8 @@ const FinalScore = () => {
   },[quiz_id , getanswer ]);
 
   return (
+    <div>
+      <Header></Header>
     <div className="card">
       <h3 class="card-title ">Result</h3>
       <div class="card-body border border-primary answer-grid">
@@ -75,7 +78,9 @@ const FinalScore = () => {
           </div>
         </div>
       </div>
+    </div>  
     </div>
+    
   );
 };
 

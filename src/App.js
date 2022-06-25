@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import MakeQuizs from "./components/Admin/MakeQuizs/MakeQuizs";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import Home from "./components/Home/Home";
 import Login from "./components/Login/Login/Login";
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
@@ -10,7 +11,7 @@ import StartQuizs from "./components/User/StartQuizs/StartQuizs";
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <Routes>
 
         <Route path="/"  element={<Home />} />
@@ -24,6 +25,7 @@ function App() {
         <Route path="/answer/:quizId" element={<FinalScore />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Registration" element={<Registration />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   );

@@ -10,6 +10,7 @@ const Quizs = () => {
   }, []);
   return (
     <div>
+      
       {allquiz.map((quiz) => (
         <Quiz key={quiz._id} singleQuiz={quiz}></Quiz>
       ))}
