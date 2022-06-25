@@ -2,15 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import Header from './components/Shared/Header/Header';
+import AuthProvider from './Context/AuthProvider/AuthProvider';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-     <BrowserRouter>
+<AuthProvider>
+<BrowserRouter>
+     <Header></Header>
      <App />
      </BrowserRouter>
+</AuthProvider>
+    
   
   </React.StrictMode>
 );
