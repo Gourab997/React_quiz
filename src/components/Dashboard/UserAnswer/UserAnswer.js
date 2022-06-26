@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../../Shared/Header/Header";
-import "./FinalScore.css";
-const FinalScore = () => {
-  const { quizId } = useParams([]);
+
+const UserAnswer = () => {
+  const { answerID } = useParams([]);
   const [getquizAnswer, setGetquizAnswer] = useState();
   const [getanswer, setGetanswer] = useState();
   const [quiz_id, setQuiz_id] = useState();
   let count = 0;
   useEffect(() => {
-    fetch(`http://localhost:5000/answer/${quizId}`)
+    fetch(`http://localhost:5000/user-answer/${answerID}`)
       .then((res) => res.json())
       .then((data) => setGetanswer(data));
-  }, [quizId]);
+  }, [answerID]);
 
   const handleCounter = () => {
     count++;
@@ -29,7 +28,6 @@ const FinalScore = () => {
 
   return (
     <div>
-      <Header></Header>
       <div className="card">
         <h3 class="card-title ">Result</h3>
         <div class="card-body border border-primary answer-grid">
@@ -81,4 +79,4 @@ const FinalScore = () => {
   );
 };
 
-export default FinalScore;
+export default UserAnswer;

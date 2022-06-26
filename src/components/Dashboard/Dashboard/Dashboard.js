@@ -1,7 +1,9 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
+import useAuth from "../../../hook/useAuth";
 import "./Dashboard.css";
 const Dashboard = () => {
   const { pathname } = useLocation();
+  const { logOut } = useAuth();
 
   return (
     <div>
@@ -46,16 +48,16 @@ const Dashboard = () => {
             </li>
 
             <li>
-              <a href="#">
+              <Link to="/dashboard/user-result">
                 <span class="icon">
                   <ion-icon name="help-outline"></ion-icon>
                 </span>
                 <span class="title">User Result</span>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#">
+              <a className="text-danger" onClick={logOut}>
                 <span class="icon">
                   <ion-icon name="log-out-outline"></ion-icon>
                 </span>

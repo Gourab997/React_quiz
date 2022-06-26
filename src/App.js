@@ -4,6 +4,8 @@ import MakeQuizs from "./components/Admin/MakeQuizs/MakeQuizs";
 import Archive from "./components/Dashboard/Archive/Archive";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import DashboardHome from "./components/Dashboard/DashboardHome/DashboardHome";
+import UserAnswer from "./components/Dashboard/UserAnswer/UserAnswer";
+import UserResult from "./components/Dashboard/UserResult/UserResult";
 import Home from "./components/Home/Home";
 import AdminRoute from "./components/Login/AdminRoute/AdminRoute";
 import Login from "./components/Login/Login/Login";
@@ -41,6 +43,8 @@ function App() {
           <Route index element={<DashboardHome />}></Route>
           <Route path="make-quiz" element={<MakeQuizs />}></Route>
           <Route path="archive" element={<Archive />}></Route>
+          <Route path="user-result" element={<UserResult />}></Route>
+          <Route path="user-result/:answerID" element={<UserAnswer />}></Route>
         </Route>
       </Routes>
     </div>

@@ -3,11 +3,13 @@ import _uniqueId from "lodash/uniqueId";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import useAuth from "../../../hook/useAuth";
 import Header from "../../Shared/Header/Header";
 const StartQuizs = () => {
   const { quizId } = useParams([]);
   const [getquiz, setGetquiz] = useState();
-  
+  const { user } = useAuth();
+
   const [id] = useState(_uniqueId(Math.floor(Math.random() * 500 + 1)));
   const {
     register,
@@ -24,7 +26,9 @@ const StartQuizs = () => {
 
   const onDataSubmit = (data) => {
     data.questionId = quizId;
+    data.questionName = getquiz?.QuizTitle;
     data.uniqueId = id;
+    data.userName = user?.displayName;
     axios.post(`http://localhost:5000/answer`, data).then((res) => {
       if (res.data.insertedId) {
         navigate(`/answer/${data.uniqueId}`);
@@ -34,7 +38,8 @@ const StartQuizs = () => {
   };
   return (
     <div>
-       <Header></Header>
+      <Header></Header>
+
       <form onSubmit={handleSubmit(onDataSubmit)}>
         {getquiz &&
           getquiz.quizs.map((qus, i) => (
