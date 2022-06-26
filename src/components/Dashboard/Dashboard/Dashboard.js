@@ -37,12 +37,12 @@ const Dashboard = () => {
             </li>
 
             <li>
-              <a href="#">
+              <Link to="/dashboard/archive">
                 <span class="icon">
                   <ion-icon name="chatbubble-outline"></ion-icon>
                 </span>
                 <span class="title">Archive</span>
-              </a>
+              </Link>
             </li>
 
             <li>

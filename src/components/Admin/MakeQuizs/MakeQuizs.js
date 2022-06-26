@@ -53,6 +53,7 @@ const MakeQuizs = () => {
   };
   const onSubmit = (data) => {
     data.quizs = inputList;
+    data.isVisible = 1;
     axios.post("http://localhost:5000/quiz", data).then((res) => {
       if (res.data.insertedId) {
         alert("quiz Created Successfully");

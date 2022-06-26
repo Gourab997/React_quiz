@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import MakeQuizs from "./components/Admin/MakeQuizs/MakeQuizs";
+import Archive from "./components/Dashboard/Archive/Archive";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import DashboardHome from "./components/Dashboard/DashboardHome/DashboardHome";
 import Home from "./components/Home/Home";
@@ -39,6 +40,7 @@ function App() {
         >
           <Route index element={<DashboardHome />}></Route>
           <Route path="make-quiz" element={<MakeQuizs />}></Route>
+          <Route path="archive" element={<Archive />}></Route>
         </Route>
       </Routes>
     </div>

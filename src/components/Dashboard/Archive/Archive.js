@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
 
-const DashboardHome = () => {
-  const [allquiz, setAllquiz] = useState([]);
-
+const Archive = () => {
+  const [allarchive, setAllarchive] = useState([]);
   const handleQuiz = () => {
-    fetch("http://localhost:5000/quiz")
+    fetch("http://localhost:5000/archive")
       .then((res) => res.json())
-      .then((data) => setAllquiz(data));
+      .then((data) => setAllarchive(data));
   };
-
   useEffect(() => {
-    fetch("http://localhost:5000/quiz")
+    fetch("http://localhost:5000/archive")
       .then((res) => res.json())
-      .then((data) => setAllquiz(data));
+      .then((data) => setAllarchive(data));
   }, []);
-  const handleOnDelete = (id, e) => {
-    const url = `http://localhost:5000/delete/${id}`;
+  const handleOnArchive = (id, e) => {
+    const url = `http://localhost:5000/archive/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -25,7 +23,7 @@ const DashboardHome = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-         handleQuiz();
+          handleQuiz();
         }
       });
   };
@@ -40,19 +38,16 @@ const DashboardHome = () => {
           </tr>
         </thead>
         <tbody>
-          {allquiz.map((quiz, i) => (
+          {allarchive.map((quiz, i) => (
             <tr>
               <th scope="row">{i + 1}</th>
               <td>{quiz.QuizTitle}</td>
               <td>
-                <button class="btn btn-primary">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button>
                 <button
-                  onClick={() => handleOnDelete(quiz._id)}
-                  class="btn btn-danger ms-2"
+                  onClick={() => handleOnArchive(quiz._id)}
+                  class="btn btn-primary"
                 >
-                  <i class="fa-solid fa-trash-can"></i>
+                  <i class="fa-solid fa-rotate-left"></i>
                 </button>
               </td>
             </tr>
@@ -63,4 +58,4 @@ const DashboardHome = () => {
   );
 };
 
-export default DashboardHome;
+export default Archive;
