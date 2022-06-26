@@ -3,6 +3,7 @@ import _uniqueId from "lodash/uniqueId";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
+import Header from "../../Shared/Header/Header";
 const StartQuizs = () => {
   const { quizId } = useParams([]);
   const [getquiz, setGetquiz] = useState();
@@ -19,7 +20,7 @@ const StartQuizs = () => {
     fetch(`http://localhost:5000/quiz/${quizId}`)
       .then((res) => res.json())
       .then((data) => setGetquiz(data));
-  }, [getquiz]);
+  }, [quizId]);
 
   const onDataSubmit = (data) => {
     data.questionId = quizId;
@@ -33,6 +34,7 @@ const StartQuizs = () => {
   };
   return (
     <div>
+       <Header></Header>
       <form onSubmit={handleSubmit(onDataSubmit)}>
         {getquiz &&
           getquiz.quizs.map((qus, i) => (
