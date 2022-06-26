@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Quiz from "../Quiz/Quiz";
+import "./Quizs.css";
 
 const Quizs = () => {
   const [allquiz, setAllquiz] = useState([]);
@@ -9,11 +10,12 @@ const Quizs = () => {
       .then((data) => setAllquiz(data));
   }, []);
   return (
-    <div>
-      
-      {allquiz.map((quiz) => (
-        <Quiz key={quiz._id} singleQuiz={quiz}></Quiz>
-      ))}
+    <div className="container my-5">
+      <div className="quizs">
+        {allquiz.map((quiz) => (
+          <Quiz key={quiz._id} singleQuiz={quiz}></Quiz>
+        ))}
+      </div>
     </div>
   );
 };

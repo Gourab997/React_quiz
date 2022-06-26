@@ -13,40 +13,57 @@ import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import Registration from "./components/Login/Registration/Registration";
 import FinalScore from "./components/User/FinalScore/FinalScore";
 import StartQuizs from "./components/User/StartQuizs/StartQuizs";
+import useAuth from "./hook/useAuth";
 
 function App() {
+  const { isLoading } = useAuth();
+  if (isLoading) {
+    <div class="spinner-grow text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>;
+  }
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-
-        <Route
-          path="/start-quiz/:quizId"
-          element={
-            <PrivateRoute>
-              <StartQuizs />
-            </PrivateRoute>
-          }
-        />
-
-        <Route path="/answer/:quizId" element={<FinalScore />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/Registration" element={<Registration />} />
-        <Route
-          path="/dashboard"
-          element={
-            <AdminRoute>
-              <Dashboard />
-            </AdminRoute>
-          }
-        >
-          <Route index element={<DashboardHome />}></Route>
-          <Route path="make-quiz" element={<MakeQuizs />}></Route>
-          <Route path="archive" element={<Archive />}></Route>
-          <Route path="user-result" element={<UserResult />}></Route>
-          <Route path="user-result/:answerID" element={<UserAnswer />}></Route>
-        </Route>
-      </Routes>
+    <div className="boxes">
+      {isLoading ? (
+        <div class="spinner-grow text-warning" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      ) : (
+        <>
+          {" "}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route
+              path="/start-quiz/:quizId"
+              element={
+                <PrivateRoute>
+                  <StartQuizs />
+                </PrivateRoute>
+              }
+            />
+            <Route path="/answer/:quizId" element={<FinalScore />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/Registration" element={<Registration />} />
+            <Route
+              path="/dashboard"
+              element={
+                <AdminRoute>
+                  <Dashboard />
+                </AdminRoute>
+              }
+            >
+              <Route index element={<DashboardHome />}></Route>
+              <Route path="make-quiz" element={<MakeQuizs />}></Route>
+              <Route path="archive" element={<Archive />}></Route>
+              <Route path="user-result" element={<UserResult />}></Route>
+              <Route
+                path="user-result/:answerID"
+                element={<UserAnswer />}
+              ></Route>
+            </Route>{" "}
+          </Routes>
+        </>
+      )}
     </div>
   );
 }

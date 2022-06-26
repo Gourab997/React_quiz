@@ -3,8 +3,12 @@ import useAuth from "../../../hook/useAuth";
 import "./Dashboard.css";
 const Dashboard = () => {
   const { pathname } = useLocation();
-  const { logOut } = useAuth();
-
+  const { user, logOut, isLoading, admin } = useAuth();
+  if (!admin || isLoading) {
+    <div class="spinner-grow text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>;
+  }
   return (
     <div>
       {/* Sidebar */}
@@ -13,10 +17,11 @@ const Dashboard = () => {
           <ul>
             <li>
               <a href="#">
-                <span class="icon">
-                  <ion-icon name="logo-apple"></ion-icon>
+                <span class="icon"></span>
+                <span class="title">
+                  {" "}
+                  <i class="fa-solid fa-chart-line me-2"></i> Quiz App
                 </span>
-                <span class="title">Brand Name</span>
               </a>
             </li>
 
@@ -25,7 +30,9 @@ const Dashboard = () => {
                 <span class="icon">
                   <ion-icon name="home-outline"></ion-icon>
                 </span>
-                <span class="title">Dashboard</span>
+                <span class="title">
+                  <i class="fa-solid fa-gauge"></i> Dashboard
+                </span>
               </Link>
             </li>
 
@@ -34,7 +41,10 @@ const Dashboard = () => {
                 <span class="icon">
                   <ion-icon name="people-outline"></ion-icon>
                 </span>
-                <span class="title">Make Quiz</span>
+                <span class="title">
+                  {" "}
+                  <i class="fa-solid fa-cookie"></i> Make Quiz
+                </span>
               </Link>
             </li>
 
@@ -43,7 +53,9 @@ const Dashboard = () => {
                 <span class="icon">
                   <ion-icon name="chatbubble-outline"></ion-icon>
                 </span>
-                <span class="title">Archive</span>
+                <span class="title">
+                  <i class="fa-solid fa-box-archive"></i> Archive
+                </span>
               </Link>
             </li>
 
@@ -52,7 +64,9 @@ const Dashboard = () => {
                 <span class="icon">
                   <ion-icon name="help-outline"></ion-icon>
                 </span>
-                <span class="title">User Result</span>
+                <span class="title">
+                  <i class="fa-solid fa-square-poll-vertical"></i> User Result
+                </span>
               </Link>
             </li>
 
@@ -61,7 +75,9 @@ const Dashboard = () => {
                 <span class="icon">
                   <ion-icon name="log-out-outline"></ion-icon>
                 </span>
-                <span class="title">Sign Out</span>
+                <span class="title">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </span>
               </a>
             </li>
           </ul>
@@ -75,19 +91,12 @@ const Dashboard = () => {
             </div>
 
             <div class="search">
-              <label>
-                <input type="text" placeholder="Search here" />
-                <ion-icon name="search-outline"></ion-icon>
-              </label>
+              <h3>Welcome {user?.displayName}</h3>
             </div>
 
-            <div class="user">
-              <img src="assets/imgs/customer01.jpg" alt="" />
-            </div>
+            <div class="user"></div>
           </div>
           <Outlet></Outlet>
-          {/* <!-- ============== ========= Cards ================== --> */}
-          {/* <!-- ================ Order Details List ================= --> */}
         </div>
       </div>
     </div>

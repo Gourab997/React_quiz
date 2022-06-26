@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../../hook/useAuth";
 import Header from "../../Shared/Header/Header";
+import "./StartQuizs.css";
 const StartQuizs = () => {
   const { quizId } = useParams([]);
   const [getquiz, setGetquiz] = useState();
@@ -44,55 +45,71 @@ const StartQuizs = () => {
         {getquiz &&
           getquiz.quizs.map((qus, i) => (
             <div>
-              <div class="card-body">
-                <h5 class="card-title">{qus.question}</h5>
+              <div id="quizWrap" class="card-body">
+                <h5 id="quizQn" class="card-title">
+                  {qus.question}
+                </h5>
 
                 <div>
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name={i}
-                    value="A"
-                    {...register(`answer${i}`)}
-                  />
-                  <label class="form-check-label" for={i}>
-                    {qus.option1}
-                  </label>
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name={i}
-                    value="B"
-                    {...register(`answer${i}`)}
-                  />
-                  <label class="form-check-label" for={i}>
-                    {qus.option2}
-                  </label>
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name={i}
-                    {...register(`answer${i}`)}
-                    value="C"
-                  />
-                  <label class="form-check-label" for={i}>
-                    {qus.option3}
-                  </label>
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name={i}
-                    {...register(`answer${i}`)}
-                    value="D"
-                  />
-                  <label class="form-check-label" for={i}>
-                    {qus.option4}
-                  </label>
+                  <div className="question">
+                    <input
+                      class="form-check-input  me-3"
+                      type="radio"
+                      name={i}
+                      value="A"
+                      {...register(`answer${i}`)}
+                    />
+
+                    <label class="form-check-label" for={i}>
+                      {qus.option1}
+                    </label>
+                  </div>
+                  <div className="question">
+                    <input
+                      class="form-check-input me-3"
+                      type="radio"
+                      name={i}
+                      value="B"
+                      {...register(`answer${i}`)}
+                    />
+                    <label class="form-check-label" for={i}>
+                      {qus.option2}
+                    </label>
+                  </div>
+                  <div className="question">
+                    <input
+                      class="form-check-input me-3"
+                      type="radio"
+                      name={i}
+                      {...register(`answer${i}`)}
+                      value="C"
+                    />
+                    <label class="form-check-label" for={i}>
+                      {qus.option3}
+                    </label>
+                  </div>
+                  <div className="question">
+                    <input
+                      class="form-check-input me-3"
+                      type="radio"
+                      name={i}
+                      {...register(`answer${i}`)}
+                      value="D"
+                    />
+                    <label class="form-check-label" for={i}>
+                      {qus.option4}
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
           ))}
-        <button type="submit">Submit</button>
+        <div className="container d-flex justify-content-center align-items-center mb-3">
+          <div></div>
+          <button className="btn btn-success" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

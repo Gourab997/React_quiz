@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
+import "./Quiz.css";
 const Quiz = ({ singleQuiz }) => {
   const { _id, QuizTitle } = singleQuiz;
   return (
-    <div>
+    <div className="container">
       {" "}
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{QuizTitle}</h5>
-          <p class="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
-          <Link to={`/start-quiz/${_id}`} class="btn btn-primary">
+      <div class="card card-background w-75">
+        <div class="card-body d-flex justify-content-between">
+          <h5 class="card-title ">{QuizTitle}</h5>
+
+          <Link to={`/start-quiz/${_id}`} id="btn">
             Start Quiz
           </Link>
         </div>
