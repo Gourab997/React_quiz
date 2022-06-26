@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import initializeAuthentication from "../../src/components/Login/Firebase/Firebase.init"
+import { useEffect, useState } from "react";
+import initializeAuthentication from "../../src/components/Login/Firebase/Firebase.init";
 
 import {
   createUserWithEmailAndPassword,
@@ -15,7 +15,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [authError, setAuthError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  // const [admin, setAdmin] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const auth = getAuth();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         const destination = location.state?.from || "/";
-        history(destination,{replace: true});
+        history(destination, { replace: true });
         setAuthError("");
       })
       .catch((error) => {
@@ -61,7 +61,7 @@ const useFirebase = () => {
         })
           .then(() => {})
           .catch((error) => {});
-          history("/",{replace: true});
+        history("/", { replace: true });
       })
       .catch((error) => {
         setAuthError(error.message);
@@ -71,11 +71,11 @@ const useFirebase = () => {
       });
   };
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/users/${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setAdmin(data?.admin));
-  // }, [user?.email]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setAdmin(data?.admin));
+  }, [user?.email]);
 
   const logOut = () => {
     signOut(auth)
@@ -107,7 +107,7 @@ const useFirebase = () => {
     isLoading,
     loginUser,
     logOut,
-    // admin,
+    admin,
   };
 };
 
