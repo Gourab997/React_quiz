@@ -27,11 +27,11 @@ const Header = () => {
             </ul>
             <div className="d-flex">
               {user?.email ? (
-                <a className="nav-link" onClick={logOut}>
+                <a className="nav-link text-danger fs-4" onClick={logOut}>
                   Logout
                 </a>
               ) : (
-                <Link className="nav-link" to="/login">
+                <Link className="nav-link text-warning fs-4" to="/login">
                   Login
                 </Link>
               )}

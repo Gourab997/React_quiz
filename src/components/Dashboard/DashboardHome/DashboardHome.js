@@ -25,7 +25,7 @@ const DashboardHome = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
-         handleQuiz();
+          handleQuiz();
         }
       });
   };
@@ -45,9 +45,6 @@ const DashboardHome = () => {
               <th scope="row">{i + 1}</th>
               <td>{quiz.QuizTitle}</td>
               <td>
-                <button class="btn btn-primary">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                </button>
                 <button
                   onClick={() => handleOnDelete(quiz._id)}
                   class="btn btn-danger ms-2"

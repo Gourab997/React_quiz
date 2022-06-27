@@ -29,15 +29,15 @@ const UserAnswer = () => {
   return (
     <div>
       <div className="card">
-        <h3 class="card-title ">Result</h3>
+        <h3 class="card-title text-dark text-center">Result</h3>
         <div class="card-body border border-primary answer-grid">
           {getquizAnswer &&
             getquizAnswer.map((qus, i) => (
               <div class="card-body border border-primary">
-                <h6>
+                <h6 className="text-dark">
                   Question {i + 1} : {qus.question}?
                 </h6>
-                <p>
+                <p className="text-dark">
                   {" "}
                   Correct Answer :
                   {getanswer && getanswer[`answer${i}`] == qus.answer ? (

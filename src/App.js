@@ -41,7 +41,15 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/answer/:quizId" element={<FinalScore />} />
+            <Route
+              path="/answer/:quizId"
+              element={
+                <PrivateRoute>
+                  {" "}
+                  <FinalScore />
+                </PrivateRoute>
+              }
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/Registration" element={<Registration />} />
             <Route
@@ -54,6 +62,7 @@ function App() {
             >
               <Route index element={<DashboardHome />}></Route>
               <Route path="make-quiz" element={<MakeQuizs />}></Route>
+
               <Route path="archive" element={<Archive />}></Route>
               <Route path="user-result" element={<UserResult />}></Route>
               <Route

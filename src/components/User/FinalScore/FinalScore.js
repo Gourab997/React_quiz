@@ -30,8 +30,8 @@ const FinalScore = () => {
   return (
     <div>
       <Header></Header>
-      <div className="card">
-        <h3 class="card-title text-dark">Result</h3>
+      <div className="card py-5">
+        <h2 class="card-title text-dark text-center">Result</h2>
         <div class="card-body border border-primary answer-grid">
           {getquizAnswer &&
             getquizAnswer.map((qus, i) => (
@@ -39,7 +39,7 @@ const FinalScore = () => {
                 <h6 className="text-dark">
                   Question {i + 1} : {qus.question}?
                 </h6>
-                <p>
+                <p className="text-dark">
                   {" "}
                   Correct Answer :
                   {getanswer && getanswer[`answer${i}`] == qus.answer ? (
@@ -64,16 +64,15 @@ const FinalScore = () => {
         </div>
 
         {/* <p>{getanswer && Object.keys(getanswer).length - 2}</p> */}
-
-        <div className="card-border d-flex justify-content-center align-items-center">
-          <h5> Final Score :</h5>{" "}
-          <div class="page-wrapper">
-            <div className="circle-wrapper">
-              <div class="success circle"></div>
-              <span className="icon">
-                {count} / {getanswer && Object.keys(getanswer).length - 5}{" "}
-              </span>
-            </div>
+      </div>
+      <div className="card-border d-flex justify-content-center align-items-center">
+        <h5> Final Score :</h5>{" "}
+        <div class="page-wrapper">
+          <div className="circle-wrapper">
+            <div class="success circle"></div>
+            <span className="icon">
+              {count} / {getanswer && Object.keys(getanswer).length - 5}{" "}
+            </span>
           </div>
         </div>
       </div>

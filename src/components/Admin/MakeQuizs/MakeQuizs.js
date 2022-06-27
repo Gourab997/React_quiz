@@ -2,6 +2,7 @@ import axios from "axios";
 import _uniqueId from "lodash/uniqueId";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./MakeQuizs.css";
 
 const MakeQuizs = () => {
@@ -17,6 +18,7 @@ const MakeQuizs = () => {
   ]);
   const [radioValue, setradioValue] = useState([]);
   const [id] = useState(_uniqueId("prefix-"));
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -56,6 +58,7 @@ const MakeQuizs = () => {
     data.isVisible = 1;
     axios.post("http://localhost:5000/quiz", data).then((res) => {
       if (res.data.insertedId) {
+        navigate(`/dashboard`);
         alert("quiz Created Successfully");
       }
     });
@@ -149,28 +152,28 @@ const MakeQuizs = () => {
 
               <div className="btn-box ">
                 {inputList.length !== 1 && (
-                  <button
+                  <a
                     className="mr10 btn btn-danger float-end"
                     onClick={() => handleRemoveClick(i)}
                   >
                     Remove
-                  </button>
+                  </a>
                 )}
                 {inputList.length - 1 === i && (
-                  <button
+                  <a
                     className="btn btn-success float-end"
                     onClick={handleAddClick}
                   >
                     Add More Question
-                  </button>
+                  </a>
                 )}
               </div>
             </div>
           );
         })}
-        <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+        {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div> */}
 
-        <input type="submit" />
+        <input className="btn btn-success" type="submit" />
       </form>
     </div>
   );

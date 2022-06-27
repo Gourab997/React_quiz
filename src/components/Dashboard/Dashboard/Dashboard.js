@@ -91,7 +91,7 @@ const Dashboard = () => {
             </div>
 
             <div class="search">
-              <h3>Welcome {user?.displayName}</h3>
+              <h3 className="text-dark">Welcome {user?.displayName}</h3>
             </div>
 
             <div class="user"></div>
