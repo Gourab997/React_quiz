@@ -5,7 +5,7 @@ const UserResult = () => {
   const [answer, setAnswer] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/answer")
+    fetch("https://tranquil-dawn-82015.herokuapp.com/answer")
       .then((res) => res.json())
       .then((data) => setAnswer(data));
   }, []);

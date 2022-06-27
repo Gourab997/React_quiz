@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 const Archive = () => {
   const [allarchive, setAllarchive] = useState([]);
   const handleQuiz = () => {
-    fetch("http://localhost:5000/archive")
+    fetch("https://tranquil-dawn-82015.herokuapp.com/archive")
       .then((res) => res.json())
       .then((data) => setAllarchive(data));
   };
   useEffect(() => {
-    fetch("http://localhost:5000/archive")
+    fetch("https://tranquil-dawn-82015.herokuapp.com/archive")
       .then((res) => res.json())
       .then((data) => setAllarchive(data));
   }, []);
   const handleOnArchive = (id, e) => {
-    const url = `http://localhost:5000/archive/${id}`;
+    const url = `https://tranquil-dawn-82015.herokuapp.com/archive/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

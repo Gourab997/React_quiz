@@ -5,7 +5,7 @@ import "./Quizs.css";
 const Quizs = () => {
   const [allquiz, setAllquiz] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/quiz")
+    fetch("https://tranquil-dawn-82015.herokuapp.com/quiz")
       .then((res) => res.json())
       .then((data) => setAllquiz(data));
   }, []);

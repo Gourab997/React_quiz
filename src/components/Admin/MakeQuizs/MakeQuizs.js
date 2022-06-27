@@ -56,7 +56,7 @@ const MakeQuizs = () => {
   const onSubmit = (data) => {
     data.quizs = inputList;
     data.isVisible = 1;
-    axios.post("http://localhost:5000/quiz", data).then((res) => {
+    axios.post("https://tranquil-dawn-82015.herokuapp.com//quiz", data).then((res) => {
       if (res.data.insertedId) {
         navigate(`/dashboard`);
         alert("quiz Created Successfully");

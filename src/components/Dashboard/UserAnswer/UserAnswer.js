@@ -8,7 +8,7 @@ const UserAnswer = () => {
   const [quiz_id, setQuiz_id] = useState();
   let count = 0;
   useEffect(() => {
-    fetch(`http://localhost:5000/user-answer/${answerID}`)
+    fetch(`https://tranquil-dawn-82015.herokuapp.com/user-answer/${answerID}`)
       .then((res) => res.json())
       .then((data) => setGetanswer(data));
   }, [answerID]);
@@ -20,7 +20,7 @@ const UserAnswer = () => {
   useEffect(() => {
     setQuiz_id(getanswer?.questionId);
     if (quiz_id) {
-      fetch(`http://localhost:5000/quiz/${quiz_id}`)
+      fetch(`https://tranquil-dawn-82015.herokuapp.com/quiz/${quiz_id}`)
         .then((res) => res.json())
         .then((data) => setGetquizAnswer(data.quizs));
     }

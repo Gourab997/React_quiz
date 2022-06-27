@@ -4,18 +4,18 @@ const DashboardHome = () => {
   const [allquiz, setAllquiz] = useState([]);
 
   const handleQuiz = () => {
-    fetch("http://localhost:5000/quiz")
+    fetch("https://tranquil-dawn-82015.herokuapp.com/quiz")
       .then((res) => res.json())
       .then((data) => setAllquiz(data));
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/quiz")
+    fetch("https://tranquil-dawn-82015.herokuapp.com/quiz")
       .then((res) => res.json())
       .then((data) => setAllquiz(data));
   }, []);
   const handleOnDelete = (id, e) => {
-    const url = `http://localhost:5000/delete/${id}`;
+    const url = `https://tranquil-dawn-82015.herokuapp.com/delete/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {

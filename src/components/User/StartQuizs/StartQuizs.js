@@ -20,7 +20,7 @@ const StartQuizs = () => {
   } = useForm();
   const navigate = useNavigate();
   useEffect(() => {
-    fetch(`http://localhost:5000/quiz/${quizId}`)
+    fetch(`https://tranquil-dawn-82015.herokuapp.com/quiz/${quizId}`)
       .then((res) => res.json())
       .then((data) => setGetquiz(data));
   }, [quizId]);
@@ -30,7 +30,7 @@ const StartQuizs = () => {
     data.questionName = getquiz?.QuizTitle;
     data.uniqueId = id;
     data.userName = user?.displayName;
-    axios.post(`http://localhost:5000/answer`, data).then((res) => {
+    axios.post(`https://tranquil-dawn-82015.herokuapp.com/answer`, data).then((res) => {
       if (res.data.insertedId) {
         navigate(`/answer/${data.uniqueId}`);
         alert("answer submitted Successfully");

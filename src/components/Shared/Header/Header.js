@@ -36,7 +36,7 @@ const Header = () => {
                 </Link>
               )}
               {user?.email && admin && (
-                <Link className="nav-link" to="/dashboard">
+                <Link className="nav-link fs-4" to="/dashboard">
                   Dashboard
                 </Link>
               )}

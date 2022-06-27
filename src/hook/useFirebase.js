@@ -72,7 +72,7 @@ const useFirebase = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://tranquil-dawn-82015.herokuapp.com/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data?.admin));
   }, [user?.email]);
@@ -81,8 +81,6 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-
-   
       })
       .catch((error) => {
         // An error happened.
@@ -92,8 +90,8 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName) => {
     const user = { email, displayName, role: "User" };
-    console.log(user);
-    fetch("http://localhost:5000/users", {
+
+    fetch("https://tranquil-dawn-82015.herokuapp.com/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
